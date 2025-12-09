@@ -10,7 +10,10 @@ return {
 					null_ls.builtins.completion.spell,
 					null_ls.builtins.formatting.prettierd,
           null_ls.builtins.diagnostics.ktlint,
-          null_ls.builtins.formatting.ktlint
+          null_ls.builtins.formatting.ktlint,
+          null_ls.builtins.diagnostics.codespell,
+          null_ls.builtins.diagnostics.proselint,
+          null_ls.builtins.formatting.csharpier
 				},
 			})
 

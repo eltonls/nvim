@@ -26,7 +26,13 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} },
 
 			-- Allows extra capabilities provided by blink.cmp
-			"saghen/blink.cmp",
+			{ "saghen/blink.cmp", opts = {
+        completion = {
+          menu = {
+				      scrollbar = false,
+          }
+        }
+      }},
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -43,7 +49,7 @@ return {
 
 					-- Peek type definition
 					map("pk", ":Lspsaga peek_type_definition<CR>", "[P]eek [T]ype [D]efinition")
-					map("pd", ":Lspsaga peek_definition", "[P]eek [D]efinition")
+					map("pd", ":Lspsaga peek_definition<CR>", "[P]eek [D]efinition")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
@@ -147,7 +153,7 @@ return {
 			-- See :help vim.diagnostic.Opts
 			vim.diagnostic.config({
 				severity_sort = true,
-				float = { border = "rounded", source = "if_many" },
+				float = { border = "rounded", source = true, header = "LSP Diagnostic" },
 				underline = { severity = vim.diagnostic.severity.ERROR },
 				signs = vim.g.have_nerd_font and {
 					text = {
@@ -158,6 +164,7 @@ return {
 					},
 				} or {},
 				virtual_text = {
+          current_line = true,
 					source = "if_many",
 					spacing = 2,
 					format = function(diagnostic)
@@ -361,7 +368,7 @@ return {
 			require("lsp_lines").setup()
 
 			vim.diagnostic.config({
-				virtual_text = false,
+				virtual_text = true,
 			})
 
 			vim.keymap.set("", "<Leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })

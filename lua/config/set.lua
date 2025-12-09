@@ -45,7 +45,7 @@ vim.opt.wrap = false
 -- if performing an operation that would fail due to unsaved changes in the buffer (),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.o.confirm = true
+vim.o.confirm = false
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -56,3 +56,4 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
